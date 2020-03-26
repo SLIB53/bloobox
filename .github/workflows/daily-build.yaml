@@ -1,0 +1,19 @@
+name: Rolling Release
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "5 3 * * *"
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Publish Image
+        uses: matootie/github-docker@v2.2.2
+        with:
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
+          imageName: rolling
+          imageTag: latest
