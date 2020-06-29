@@ -6,14 +6,15 @@
 
 ## Installed Tools
 
+* bat
 * fish
 * git
 * htop
 * neovim
-* node
 * procps
 * tree
 * which
+
 
 ## Usage
 
@@ -46,6 +47,7 @@ Then, to run:
 ``` sh
 docker run --rm -it github.com/slib53/bloobox
 ```
+
 
 #### Building locally
 
