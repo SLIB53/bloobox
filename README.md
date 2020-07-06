@@ -31,7 +31,7 @@ docker run --rm -it docker.pkg.github.com/slib53/bloobox/rolling
 Run a temporary bloobox container for your current directory:
 
 ``` sh
-docker run --rm -it -v $PWD:/mnt/h/$PWD -w /mnt/h/$PWD docker.pkg.github.com/slib53/bloobox/rolling
+docker run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD docker.pkg.github.com/slib53/bloobox/rolling
 ```
 
 ### Build
