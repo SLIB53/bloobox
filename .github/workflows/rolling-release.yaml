@@ -2,7 +2,7 @@ name: Rolling Release
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: "0 1 * * 0"
 jobs:
