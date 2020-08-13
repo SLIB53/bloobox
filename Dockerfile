@@ -10,7 +10,7 @@ ENV PEPPER_FISH_THEME_DIR ${TMP_WORKSPACE_DIR}/github.com/slib53/pepper-fish-the
 # DIRTY: for rolling release, instruction defines a mutable layer
 RUN dnf upgrade --assumeyes
 
-RUN dnf install --assumeyes bat fish git htop neovim procps tree which
+RUN dnf install --assumeyes bat fish git procps tree which
 
 # Clone pepper-fish-theme
 
