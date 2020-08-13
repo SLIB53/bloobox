@@ -9,8 +9,6 @@
 * bat
 * fish
 * git
-* htop
-* neovim
 * procps
 * tree
 * which
