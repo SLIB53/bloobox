@@ -17,4 +17,4 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.CR_PAT }}
           registry: ghcr.io
-          tags: bloobox:latest
+          tags: latest
