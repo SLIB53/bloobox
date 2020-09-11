@@ -14,7 +14,7 @@ jobs:
       - name: Publish Image
         uses: docker/build-push-action@v1
         with:
-          username: ${{ GITHUB_ACTOR }}
+          username: $GITHUB_ACTOR
           password: ${{ secrets.CR_PAT }}
           registry: ghcr.io
           tags: bloobox:latest
