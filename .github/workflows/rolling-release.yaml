@@ -12,8 +12,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Publish Image
-        uses: matootie/github-docker@v2.2.2
+        uses: docker/build-push-action@v1
         with:
-          accessToken: ${{ secrets.GITHUB_TOKEN }}
-          imageName: rolling
-          imageTag: latest
+          username: ${{ GITHUB_ACTOR }}
+          password: ${{ secrets.CR_PAT }}
+          registry: ghcr.io
+          tags: bloobox:latest
