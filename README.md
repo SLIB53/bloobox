@@ -16,20 +16,20 @@
 
 ## Usage
 
-`bloobox` is maintained as a rolling release distribution for Docker. An image is available on [GitHub Packages](https://github.com/SLIB53/bloobox/packages). To use locally, see the [build](#build) section below.
+`bloobox` is maintained as a rolling release distribution for Docker. An image is available on [GitHub Container Registry](https://github.com/users/SLIB53/packages/container/bloobox). To use locally, see the [build](#build) section below.
 
 **Please note** that the [Dockerfile](Dockerfile) should be built with the `--no-cache` flag so that the latest dependencies are included in the build.
 
 Run a temporary bloobox container:
 
 ``` sh
-docker run --rm -it docker.pkg.github.com/slib53/bloobox/rolling
+docker run --rm -it ghcr.io/slib53/bloobox
 ```
 
 Run a temporary bloobox container for your current directory:
 
 ``` sh
-docker run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD docker.pkg.github.com/slib53/bloobox/rolling
+docker run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD ghcr.io/slib53/bloobox
 ```
 
 ### Build
