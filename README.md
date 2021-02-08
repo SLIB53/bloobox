@@ -11,8 +11,9 @@
 * git
 * procps
 * tree
+* unzip
 * which
-
+* zip
 
 ## Usage
 
