@@ -5,7 +5,7 @@ ENV PEPPER_FISH_THEME_DIR /tmp/workspace/github.com/slib53/pepper-fish-theme
 
 # Install Base Setup
 
-RUN dnf install --assumeyes bat fish git procps tree which
+RUN dnf install --assumeyes bat fish git procps tree unzip which zip
 
 RUN mkdir -p /root/.config/fish/functions && \
 echo 'set fish_greeting' > /root/.config/fish/functions/fish_greeting.fish
@@ -25,5 +25,5 @@ rm -rf ${PEPPER_FISH_THEME_DIR}
 
 # Configure
 
-WORKDIR /root
+WORKDIR /home
 CMD [ "fish" ]
