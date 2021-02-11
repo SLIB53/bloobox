@@ -5,7 +5,7 @@ FROM fedora
 RUN dnf install --assumeyes bat fish git procps tree unzip which zip
 
 RUN mkdir -p /root/.config/fish/functions &&
-    echo 'set fish_greeting' >/root/.config/fish/functions/fish_greeting.fish
+    echo 'set fish_greeting' > /root/.config/fish/functions/fish_greeting.fish
 
 # Upgrade to Latest Software
 
