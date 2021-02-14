@@ -13,21 +13,26 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Publish latest
-        uses: docker/build-push-action@v1
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
         with:
-          username: $GITHUB_ACTOR
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
+
+      - name: Publish latest
+        uses: docker/build-push-action@v2
+        with:
+          context: .
           registry: ghcr.io
           tags: latest
+          push: true
 
       - name: Publish terraform
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           context: ./alt/terraform
-          username: $GITHUB_ACTOR
-          password: ${{ secrets.CR_PAT }}
-          registry: ghcr.io
-          tags: terraform
           build-args: |
             TERRAFORM_ZIP_URL=https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip
+          tags: terraform
+          push: true
