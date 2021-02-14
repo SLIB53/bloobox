@@ -24,8 +24,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          registry: ghcr.io
-          tags: latest
+          tags: ghcr.io/slib53/bloobox
           push: true
 
       - name: Publish terraform
@@ -34,5 +33,5 @@ jobs:
           context: ./alt/terraform
           build-args: |
             TERRAFORM_ZIP_URL=https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip
-          tags: terraform
+          tags: ghcr.io/slib53/bloobox:terraform
           push: true
