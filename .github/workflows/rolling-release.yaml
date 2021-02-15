@@ -13,25 +13,27 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Login to GitHub Container Registry
+      - name: Log in to GitHub Container Registry
         uses: docker/login-action@v1 
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Publish latest
+      - name: Build & Publish latest
         uses: docker/build-push-action@v2
         with:
           context: .
+          build-args: |
+            PEPPER_GIT_URL=${{ secrets.PEPPER_GIT_URL }}
           tags: ghcr.io/slib53/bloobox
           push: true
 
-      - name: Publish terraform
+      - name: Build & Publish terraform
         uses: docker/build-push-action@v2
         with:
           context: ./alt/terraform
           build-args: |
-            TERRAFORM_ZIP_URL=https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip
+            TERRAFORM_DOWNLOAD_URL=${{ secrets.TERRAFORM_DOWNLOAD_URL }}
           tags: ghcr.io/slib53/bloobox:terraform
           push: true
