@@ -6,7 +6,8 @@ ARG PEPPER_GIT_URL
 
 # DIRTY: for rolling release, instruction defines an inconsistent layer
 RUN dnf upgrade --assumeyes \
-    && dnf install --assumeyes bat fish git procps tree unzip which zip
+    && dnf install --assumeyes bat fish git procps tree unzip which zip \
+    && dnf clean all -y
 
 ## Configure Fish Shell
 
