@@ -28,12 +28,3 @@ jobs:
             PEPPER_GIT_URL=${{ secrets.PEPPER_GIT_URL }}
           tags: ghcr.io/slib53/bloobox
           push: true
-
-      - name: Build & Publish terraform
-        uses: docker/build-push-action@v2
-        with:
-          context: ./alt/terraform
-          build-args: |
-            TERRAFORM_DOWNLOAD_URL=${{ secrets.TERRAFORM_DOWNLOAD_URL }}
-          tags: ghcr.io/slib53/bloobox:terraform
-          push: true
