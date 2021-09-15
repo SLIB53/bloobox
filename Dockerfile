@@ -25,5 +25,6 @@ RUN rm -rf /tmp/workspace
 
 # Configure
 
-WORKDIR /home
+WORKDIR /root
+
 CMD [ "fish" ]
