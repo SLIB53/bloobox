@@ -20,7 +20,7 @@ needs!
 ## Usage
 
 `bloobox` is maintained as a rolling release distribution for Docker. An image
-is available on [GitHub Container Registry](https://github.com/users/SLIB53/packages/container/bloobox).
+is available on [GitHub Container Registry][bloobox-ghcr-package].
 To use locally, see the [build](#build) section below.
 
 Run a temporary bloobox container:
@@ -69,3 +69,5 @@ Then, to run:
 ```sh
 docker run --rm -it local/bloobox
 ```
+
+[bloobox-ghcr-package]: https://github.com/users/SLIB53/packages/container/package/bloobox
