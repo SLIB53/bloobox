@@ -25,6 +25,6 @@ jobs:
         with:
           context: .
           build-args: |
-            PEPPER_GIT_URL=${{ secrets.PEPPER_GIT_URL }}
+            PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git
           tags: ghcr.io/slib53/bloobox
           push: true
