@@ -26,5 +26,6 @@ jobs:
           context: .
           build-args: |
             PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git
-          tags: ghcr.io/slib53/bloobox
+          platforms: linux/amd64,linux/arm64
           push: true
+          tags: ghcr.io/slib53/bloobox
