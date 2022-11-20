@@ -45,7 +45,7 @@ the `--no-cache` flag so that the latest dependencies are included in the build.
 ```sh
 docker build --no-cache \
     --build-arg PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git \
-    --rm -t github.com/slib53/bloobox https://github.com/SLIB53/bloobox.git
+    --rm -t github.com/slib53/bloobox https://github.com/SLIB53/bloobox.git#main
 ```
 
 Then, to run:
@@ -69,5 +69,3 @@ Then, to run:
 ```sh
 docker run --rm -it local/bloobox
 ```
-
-[bloobox-ghcr-package]: https://github.com/users/SLIB53/packages/container/package/bloobox
