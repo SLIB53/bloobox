@@ -10,6 +10,7 @@ needs!
 
 - fish
 - git
+- ncurses
 - unzip
 
 ## Usage
