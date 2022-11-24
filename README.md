@@ -49,9 +49,16 @@ docker run --rm -it github.com/slib53/bloobox
 
 #### Building locally
 
+Clone the repository:
+
 ```sh
 git clone https://github.com/SLIB53/bloobox.git
 cd bloobox
+```
+
+Now build the image:
+
+```sh
 docker build --no-cache --rm -t local/bloobox .
 ```
 
@@ -76,7 +83,7 @@ fish ~/scripts/install_terraform.fish
 To install the AWS CLI, run the following command:
 
 ```sh
-fish ~/scripts/install_aws_cli.fish
+fish ~/scripts/install_awscli.fish
 ```
 
 #### Extras
