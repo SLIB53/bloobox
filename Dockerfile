@@ -28,6 +28,8 @@ RUN rm -rf /tmp/workspace
 
 # Configure
 
+RUN usermod --shell /bin/fish root
+
 WORKDIR /root
 
 CMD [ "fish" ]
