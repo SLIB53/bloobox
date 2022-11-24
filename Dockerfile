@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:37
 
 # Install Base Setup
 
