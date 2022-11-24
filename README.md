@@ -15,7 +15,7 @@ needs!
 ## Usage
 
 `bloobox` is maintained as a rolling release distribution for Docker. An image
-is available on [GitHub Container Registry][bloobox-ghcr-package].
+is available on [GitHub Container Registry](https://github.com/SLIB53/bloobox/pkgs/container/bloobox).
 To use locally, see the [build](#build) section below.
 
 Run a temporary bloobox container:
