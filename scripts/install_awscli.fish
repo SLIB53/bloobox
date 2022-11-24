@@ -18,7 +18,7 @@ begin
 end
 
 begin
-    echo "Downloading from $APP_DOWNLOAD_URL..."
+    echo "Downloading app from $APP_DOWNLOAD_URL..."
 
     curl $APP_DOWNLOAD_URL \
         -o awscli.zip
