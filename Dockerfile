@@ -4,7 +4,7 @@ FROM fedora:37
 
 # DIRTY: for rolling release, instruction defines an inconsistent layer
 RUN dnf upgrade --assumeyes \
-    && dnf install --assumeyes fish git-core unzip \
+    && dnf install --assumeyes fish git-core ncurses unzip \
     && dnf clean all -y
 
 ## Configure Fish Shell
