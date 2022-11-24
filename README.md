@@ -8,14 +8,9 @@ needs!
 
 ## Installed Tools
 
-- bat
 - fish
 - git
-- procps
-- tree
 - unzip
-- which
-- zip
 
 ## Usage
 
@@ -35,7 +30,7 @@ Run a temporary bloobox container for your current directory:
 docker run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD ghcr.io/slib53/bloobox
 ```
 
-### Build
+### Build & Run
 
 **Please note** that the [Dockerfile](Dockerfile) might need to be built with
 the `--no-cache` flag so that the latest dependencies are included in the build.
@@ -43,9 +38,7 @@ the `--no-cache` flag so that the latest dependencies are included in the build.
 #### Building from GitHub
 
 ```sh
-docker build --no-cache \
-    --build-arg PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git \
-    --rm -t github.com/slib53/bloobox https://github.com/SLIB53/bloobox.git#main
+docker build --no-cache --rm -t github.com/slib53/bloobox https://github.com/SLIB53/bloobox.git#main
 ```
 
 Then, to run:
@@ -56,16 +49,47 @@ docker run --rm -it github.com/slib53/bloobox
 
 #### Building locally
 
+Clone the repository:
+
 ```sh
 git clone https://github.com/SLIB53/bloobox.git
 cd bloobox
-docker build --no-cache \
-    --build-arg PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git \
-    --rm -t local/bloobox .
+```
+
+Now build the image:
+
+```sh
+docker build --no-cache --rm -t local/bloobox .
 ```
 
 Then, to run:
 
 ```sh
 docker run --rm -it local/bloobox
+```
+
+### Installers
+
+#### Terraform
+
+To install Terraform, run the following command:
+
+```sh
+fish ~/scripts/install_terraform.fish
+```
+
+#### AWS CLI
+
+To install the AWS CLI, run the following command:
+
+```sh
+fish ~/scripts/install_awscli.fish
+```
+
+#### Extras
+
+To install extras, run the following command:
+
+```sh
+fish ~/scripts/install_extras.fish
 ```

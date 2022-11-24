@@ -1,10 +1,7 @@
 name: Rolling Release
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: "0 1 * * 0"
+    - cron: "0 0 1 * *"
   workflow_dispatch:
 jobs:
   release:
@@ -30,8 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          build-args: |
-            PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/slib53/bloobox
