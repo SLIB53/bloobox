@@ -71,22 +71,6 @@ docker run --rm -it local/bloobox
 
 ### Installers
 
-#### Terraform
-
-To install Terraform, run the following command:
-
-```sh
-fish ~/scripts/install_terraform.fish
-```
-
-#### AWS CLI
-
-To install the AWS CLI, run the following command:
-
-```sh
-fish ~/scripts/install_awscli.fish
-```
-
 #### Extras
 
 To install extras, run the following command:
