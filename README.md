@@ -6,14 +6,15 @@
 Feel free to fork it so that you can make a container that fits your
 needs!
 
-## Installed Tools
+## Base Packages
 
 - bat
 - eza
 - fish
 - git
-- unzip
-- zip
+- openssh-server
+- procps
+- which
 
 
 ## Usage
@@ -34,9 +35,16 @@ Run a temporary bloobox container for your current directory:
 podman run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD ghcr.io/slib53/bloobox
 ```
 
+Run a bloobox container running systemd and OpenSSH server:
+
+```sh
+podman run --rm -it --detach --user root --entrypoint '/sbin/init' -p 8022:22 bloobox # connect with 'ssh -p 8022 bloo@localhost', default password 'bloo'
+```
+
+
 ### Build & Run
 
-**Please note** that the [Dockerfile](Dockerfile) might need to be built with
+**Please note** that the [Containerfile](Containerfile) might need to be built with
 the `--no-cache` flag so that the latest dependencies are included in the build.
 
 #### Building from GitHub
