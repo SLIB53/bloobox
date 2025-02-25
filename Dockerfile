@@ -4,33 +4,30 @@ WORKDIR /root
 
 CMD [ "fish" ]
 
-# Configure Users
+# Install Base Packages
+
+# WARNING: Instruction defines an inconsistent layer for rolling release.
+RUN dnf upgrade --assumeyes \
+    && dnf install --assumeyes bat eza fish git-core ncurses unzip which zip \
+    && dnf clean all -y
+
+
+# Configure
+
+## Configure User
 
 RUN usermod --shell /bin/fish root
 
-
-# Install Base Packages
-
-# DIRTY: for rolling release, instruction defines an inconsistent layer
-RUN dnf upgrade --assumeyes \
-    && dnf install --assumeyes fish git-core ncurses unzip \
-    && dnf clean all -y
-
-## Configure Fish Shell
+### Configure Shell
 
 RUN mkdir -p /root/.config/fish/functions \
     && echo 'set fish_greeting' >/root/.config/fish/functions/fish_greeting.fish
 
-# DIRTY: for rolling release, instruction defines an inconsistent layer
+# WARNING: Instruction defines an inconsistent layer for rolling release.
 RUN PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git \
     && PEPPER_WORKING_COPY_DIR=/tmp/workspace/github.com/slib53/pepper-fish-theme \
     && git clone --branch release-bloobox --single-branch ${PEPPER_GIT_URL} ${PEPPER_WORKING_COPY_DIR} \
     && cd ${PEPPER_WORKING_COPY_DIR} && fish scripts/apply_theme.fish
-
-
-## Import Scripts
-
-COPY scripts /root/scripts
 
 
 # Clean Up
