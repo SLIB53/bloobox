@@ -1,6 +1,15 @@
-FROM fedora:39
+FROM fedora:41
 
-# Install Base Setup
+WORKDIR /root
+
+CMD [ "fish" ]
+
+# Configure Users
+
+RUN usermod --shell /bin/fish root
+
+
+# Install Base Packages
 
 # DIRTY: for rolling release, instruction defines an inconsistent layer
 RUN dnf upgrade --assumeyes \
@@ -18,18 +27,12 @@ RUN PEPPER_GIT_URL=https://github.com/SLIB53/pepper-fish-theme.git \
     && git clone --branch release-bloobox --single-branch ${PEPPER_GIT_URL} ${PEPPER_WORKING_COPY_DIR} \
     && cd ${PEPPER_WORKING_COPY_DIR} && fish scripts/apply_theme.fish
 
+
 ## Import Scripts
 
 COPY scripts /root/scripts
 
+
 # Clean Up
 
 RUN rm -rf /tmp/workspace
-
-# Configure
-
-RUN usermod --shell /bin/fish root
-
-WORKDIR /root
-
-CMD [ "fish" ]
