@@ -7,14 +7,14 @@ jobs:
   release:
     runs-on: macos-latest
     steps:
+      - name: Install Podman
+        run: brew install podman
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Log into GitHub Container Registry
         run: podman login ghcr.io --username ${{ github.repository_owner }} --password ${{ secrets.BLOOBOX_RELEASE_OPERATOR_GITHUB_PAT }}
-
-      - name: Install Podman
-        run: brew install podman
 
       - name: Create Container Manifest
         run: podman manifest create ghcr.io/slib53/bloobox
