@@ -1,0 +1,23 @@
+name: Release
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+jobs:
+  release:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Container Image
+        run: podman build --squash --tag ghcr.io/slib53/bloobox .
+
+      - name: Log into GitHub Container Registry
+        run: podman login ghcr.io --username ${{ github.repository_owner }} --password ${{ secrets.BLOOBOX_RELEASE_OPERATOR_GITHUB_PAT }}
+
+      - name: Push Container Image
+        run: podman push ghcr.io/slib53/bloobox
