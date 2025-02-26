@@ -16,10 +16,16 @@ RUN dnf upgrade --assumeyes \
 RUN systemctl enable sshd.service
 
 
+## Overlay Directories & Files
+
+COPY overlay/ /
+
+
 ## Configure Users
 
 RUN useradd --create-home --shell /usr/bin/fish bloo --groups wheel \
-    && echo 'bloo' | passwd --stdin bloo
+    && echo 'bloo' | passwd --stdin bloo \
+    && chown -R bloo:bloo /home/bloo
 
 
 ### Configure Shell
@@ -29,13 +35,6 @@ USER bloo
 RUN mkdir -p /home/bloo/.config/fish/functions \
     && echo 'set fish_greeting' >/home/bloo/.config/fish/functions/fish_greeting.fish
 
-# COPY <<EOF /home/bloo/.config/fish/config.fish
-# if status is-interactive
-#     alias sl eza
-#     alias sla 'eza -la'
-#     alias slr 'eza --tree'
-# end
-# EOF
 
 # WARNING: Instruction defines an inconsistent layer for rolling release.
 RUN PEPPER_WORKING_COPY_DIR=/tmp/Workspaces/github.com/slib53/pepper-fish-theme \

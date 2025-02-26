@@ -38,7 +38,7 @@ podman run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD ghcr.io/slib53/bloobox
 Run a bloobox container running systemd and OpenSSH server:
 
 ```sh
-podman run --rm -it --detach --user root --entrypoint '/sbin/init' -p 8022:22 bloobox # connect with 'ssh -p 8022 bloo@localhost', default password 'bloo'
+podman run --rm -it --detach --user root --entrypoint '/sbin/init' -p 10022:22 bloobox # connect with 'ssh -p 8022 bloo@localhost', default password 'bloo'
 ```
 
 
