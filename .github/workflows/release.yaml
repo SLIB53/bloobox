@@ -5,16 +5,10 @@ on:
   workflow_dispatch:
 jobs:
   release:
-    runs-on: macos-latest
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Install Podman
-        run: brew install podman
-
-      - name: Initialize & Start Podman
-        run: podman machine init && podman machine start
 
       - name: Log into GitHub Container Registry
         run: podman login ghcr.io --username ${{ github.repository_owner }} --password ${{ secrets.BLOOBOX_RELEASE_OPERATOR_GITHUB_PAT }}
