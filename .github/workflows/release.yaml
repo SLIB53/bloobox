@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -13,11 +13,14 @@ jobs:
       - name: Log into GitHub Container Registry
         run: podman login ghcr.io --username ${{ github.repository_owner }} --password ${{ secrets.BLOOBOX_RELEASE_OPERATOR_GITHUB_PAT }}
 
+      - name: Install Podman
+        run: brew install podman
+
       - name: Create Container Manifest
         run: podman manifest create ghcr.io/slib53/bloobox
 
       - name: Build Container Image
-        run: podman build --jobs=2 --platform=linux/amd64,linux/arm64 --manifest ghcr.io/slib53/bloobox .
+        run: podman build --jobs=2 --platform=linux/amd64,linux/arm64 --squash --tag ghcr.io/slib53/bloobox .
 
       - name: Push Container Image
-        run: podman push ghcr.io/slib53/bloobox
+        run: podman manifest push ghcr.io/slib53/bloobox
