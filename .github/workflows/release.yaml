@@ -23,7 +23,7 @@ jobs:
         run: podman manifest create ghcr.io/slib53/bloobox
 
       - name: Build Container Image
-        run: podman build --jobs=2 --platform=linux/amd64,linux/arm64 --squash --tag ghcr.io/slib53/bloobox .
+        run: podman build --jobs=2 --platform=linux/amd64,linux/arm64 --squash --manifest ghcr.io/slib53/bloobox .
 
       - name: Push Container Image
         run: podman manifest push ghcr.io/slib53/bloobox
