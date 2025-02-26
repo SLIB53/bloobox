@@ -13,6 +13,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Install Podman
+        if: matrix.os == 'ubuntu-24.04-arm'
+        run: sudo apt update && sudo apt install --assume-yes podman
+
       - name: Build Container Image
         run: podman build --squash --tag ghcr.io/slib53/bloobox .
 
