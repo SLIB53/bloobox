@@ -1,6 +1,6 @@
 # bloobox
 
-[![Rolling Release](https://github.com/SLIB53/bloobox/actions/workflows/rolling-release.yaml/badge.svg)](https://github.com/SLIB53/bloobox/actions/workflows/rolling-release.yaml)
+[![Release](https://github.com/SLIB53/bloobox/actions/workflows/release.yaml/badge.svg)](https://github.com/SLIB53/bloobox/actions/workflows/release.yaml)
 
 `bloobox` is a containerized environment based on my personal usage.
 Feel free to fork it so that you can make a container that fits your

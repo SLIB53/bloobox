@@ -29,13 +29,13 @@ USER bloo
 RUN mkdir -p /home/bloo/.config/fish/functions \
     && echo 'set fish_greeting' >/home/bloo/.config/fish/functions/fish_greeting.fish
 
-COPY <<EOF /home/bloo/.config/fish/config.fish
-if status is-interactive
-    alias sl eza
-    alias sla 'eza -la'
-    alias slr 'eza --tree'
-end
-EOF
+# COPY <<EOF /home/bloo/.config/fish/config.fish
+# if status is-interactive
+#     alias sl eza
+#     alias sla 'eza -la'
+#     alias slr 'eza --tree'
+# end
+# EOF
 
 # WARNING: Instruction defines an inconsistent layer for rolling release.
 RUN PEPPER_WORKING_COPY_DIR=/tmp/Workspaces/github.com/slib53/pepper-fish-theme \
