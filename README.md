@@ -38,7 +38,7 @@ podman run --rm -it -v $PWD:/mnt/h$PWD -w /mnt/h$PWD ghcr.io/slib53/bloobox
 Run a bloobox container running systemd and OpenSSH server:
 
 ```sh
-podman run --rm -it --detach --user root --entrypoint '/sbin/init' -p 10022:22 bloobox # connect with 'ssh -p 8022 bloo@localhost', default password 'bloo'
+podman run --rm -it --detach --user root --entrypoint '/sbin/init' -p 10022:22 bloobox # connect with 'ssh -p 10022 bloo@localhost', default password 'bloo'
 ```
 
 
@@ -50,7 +50,7 @@ the `--no-cache` flag so that the latest dependencies are included in the build.
 #### Building from GitHub
 
 ```sh
-podman build --squash --rm -t github.com/slib53/bloobox https://github.com/SLIB53/bloobox.git#azool
+podman build --squash --rm -t github.com/slib53/bloobox https://github.com/SLIB53/bloobox.git
 ```
 
 Then, to run:
