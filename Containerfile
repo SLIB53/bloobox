@@ -1,10 +1,10 @@
-FROM quay.io/fedora/fedora
+FROM fedora
 
 # Install Base Packages
 
 # WARNING: Instruction defines an inconsistent layer for rolling release.
 RUN dnf upgrade --assumeyes \
-    && dnf install --assumeyes bat eza fish git-core ncurses procps which \
+    && dnf install --assumeyes bat fish git-core ncurses procps \
     && dnf install --assumeyes openssh-server \
     && dnf clean all --assumeyes
 
@@ -14,11 +14,6 @@ RUN dnf upgrade --assumeyes \
 ## Configure systemd
 
 RUN systemctl enable sshd.service
-
-
-## Overlay Directories & Files
-
-COPY overlay/ /
 
 
 ## Configure Users
@@ -36,7 +31,7 @@ RUN mkdir -p /home/bloo/.config/fish/functions \
     && echo 'set fish_greeting' >/home/bloo/.config/fish/functions/fish_greeting.fish
 
 # WARNING: Instruction defines an inconsistent layer for rolling release.
-RUN PEPPER_WORKING_COPY_DIR=/tmp/build-ctx/Workspaces/github.com/slib53/pepper-fish-theme \
+RUN PEPPER_WORKING_COPY_DIR=/tmp/build/Workspaces/github.com/slib53/pepper-fish-theme \
     && git clone --branch release-bloobox --single-branch https://github.com/SLIB53/pepper-fish-theme.git ${PEPPER_WORKING_COPY_DIR} \
     && cd ${PEPPER_WORKING_COPY_DIR}; fish scripts/apply_theme.fish
 
@@ -45,7 +40,7 @@ RUN PEPPER_WORKING_COPY_DIR=/tmp/build-ctx/Workspaces/github.com/slib53/pepper-f
 
 USER root
 
-RUN rm -rf /tmp/build-ctx
+RUN rm -rf /tmp/build
 
 
 # Configure Container

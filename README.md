@@ -9,12 +9,10 @@ needs!
 ## Base Packages
 
 - bat
-- eza
 - fish
 - git
 - openssh-server
 - procps
-- which
 
 
 ## Usage
